@@ -9,6 +9,8 @@ public interface ProductDao {
 	Product createdProduct(Product product);
 	
 	Product updatedProduct(Product product);
+
+	Product getIdproduct(int idproduct);
 	
 	List<Product> listProduct();
 	

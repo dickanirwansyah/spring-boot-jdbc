@@ -19,4 +19,19 @@ public class ProductServiceImpl implements ProductService{
 		return productdao.listProduct();
 	}
 
+	@Override
+	public Product getIdproduct(int idproduct) {
+		return productdao.getIdproduct(idproduct);
+	}
+
+	@Override
+	public Product createdProduct(Product product) {
+		return productdao.createdProduct(product);
+	}
+
+	@Override
+	public Product updateProduct(Product product) {
+		return productdao.updatedProduct(product);
+	}
+
 }

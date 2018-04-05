@@ -3,6 +3,7 @@ package com.dicka.jdbc.springbootjdbc.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -20,14 +21,28 @@ public class ProductDaoImpl implements ProductDao{
 	
 	@Override
 	public Product createdProduct(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "insert into product(name, quantity, price) values(?, ?, ?)";
+		jdbctemplate.update(sql,
+				product.getName(),
+				product.getQuantity(),
+				product.getPrice());
+		return product;
 	}
 
 	@Override
 	public Product updatedProduct(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "update product set name=?, quantity=?, price=? where idproduct=?";
+		jdbctemplate.update(sql, product.getName(), product.getQuantity(),
+				product.getPrice(), product.getIdproduct());
+		return product;
+	}
+
+	@Override
+	public Product getIdproduct(int idproduct) {
+		String sql = "select idproduct, name, quantity price from product where idproduct=?";
+		RowMapper<Product> mapper = new BeanPropertyRowMapper<Product>(Product.class);
+		Product product = jdbctemplate.queryForObject(sql, mapper, idproduct);
+		return  product;
 	}
 
 	@Override
