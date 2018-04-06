@@ -23,4 +23,17 @@ public class BarangDaoImpl implements BarangDao{
         RowMapper<Barang> barangRowMapper = new RowMapperBarang();
         return jdbcTemplate.query(sql, barangRowMapper);
     }
+
+    @Override
+    public Barang createdBarang(Barang barang) {
+        String sql = "insert into barang(idbarang, nama, jumlah, price, valid, idgudang) " +
+                "values(?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, barang.getIdbarang(),
+                barang.getNama(),
+                barang.getJumlah(),
+                barang.getPrice(),
+                barang.isValid(),
+                barang.getGudang().getIdgudang());
+        return barang;
+    }
 }

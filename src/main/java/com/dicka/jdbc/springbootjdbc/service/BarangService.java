@@ -7,4 +7,6 @@ import java.util.List;
 public interface BarangService {
 
     List<Barang> listBarang();
+
+    Barang createdBarang(Barang barang);
 }

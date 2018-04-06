@@ -17,4 +17,9 @@ public class BarangServiceImpl implements BarangService{
     public List<Barang> listBarang() {
         return barangDao.listBarang();
     }
+
+    @Override
+    public Barang createdBarang(Barang barang) {
+        return barangDao.createdBarang(barang);
+    }
 }

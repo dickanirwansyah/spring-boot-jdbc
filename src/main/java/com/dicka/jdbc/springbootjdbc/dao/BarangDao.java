@@ -7,4 +7,6 @@ import java.util.List;
 public interface BarangDao {
 
     List<Barang> listBarang();
+
+    Barang createdBarang(Barang barang);
 }
